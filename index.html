@@ -1,0 +1,2208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مختبر الفهم والمراجعة الذكية | بعض الخصائص الفيزيائية والكيميائية للعناصر - الصف السادس</title>
+<style>
+  :root {
+    --primary: #0f4c5c;
+    --primary-light: #1a6b80;
+    --secondary: #e36414;
+    --accent: #2a9d8f;
+    --bg: #f4f7f8;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --success: #15803d;
+    --success-bg: #dcfce7;
+    --danger: #b91c1c;
+    --danger-bg: #fee2e2;
+    --pal-red: #ce1126;
+    --pal-green: #007a3d;
+    --pal-black: #111111;
+  }
+
+  * {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* زخرفة الكوفية الفلسطينية العلوية والسفلية */
+  .keffiyeh-bar {
+    height: 16px;
+    width: 100%;
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(45deg, #111111 25%, transparent 25%),
+      linear-gradient(-45deg, #111111 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #111111 75%),
+      linear-gradient(-45deg, transparent 75%, #111111 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    border-top: 3px solid var(--pal-red);
+    border-bottom: 3px solid var(--pal-green);
+  }
+
+  /* الترويسة الرسمية */
+  .official-header {
+    background: linear-gradient(135deg, #ffffff 0%, #eef5f7 100%);
+    border-bottom: 3px solid var(--primary);
+    padding: 16px 20px;
+  }
+
+  .header-grid {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .header-right {
+    text-align: right;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--primary);
+  }
+
+  .header-center {
+    text-align: center;
+  }
+
+  .header-center h1 {
+    margin: 6px 0;
+    font-size: 1.38rem;
+    color: var(--primary);
+    font-weight: 900;
+  }
+
+  .header-center .badge {
+    display: inline-block;
+    background: var(--secondary);
+    color: #ffffff;
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .header-left {
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #334155;
+  }
+
+  .pal-flag {
+    display: inline-flex;
+    width: 34px;
+    height: 22px;
+    border: 1px solid #94a3b8;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    margin: 0 6px;
+  }
+
+  .pal-flag-stripes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pal-flag-stripes span:nth-child(1) { background: var(--pal-black); flex: 1; }
+  .pal-flag-stripes span:nth-child(2) { background: #ffffff; flex: 1; }
+  .pal-flag-stripes span:nth-child(3) { background: var(--pal-green); flex: 1; }
+
+  .pal-flag-triangle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-right: 14px solid var(--pal-red);
+  }
+
+  .container {
+    max-width: 1150px;
+    margin: 20px auto;
+    padding: 0 16px 40px;
+  }
+
+  /* شريط بيانات الطالب ومؤشر التقدم */
+  .student-bar {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .student-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .student-inputs label {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 0.95rem;
+  }
+
+  .student-inputs input {
+    padding: 7px 12px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #ffffff;
+    color: var(--text);
+  }
+
+  .student-inputs input:focus {
+    border-color: var(--primary);
+  }
+
+  .progress-box {
+    min-width: 240px;
+    flex: 1;
+    max-width: 340px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--primary));
+    transition: width 0.4s ease;
+  }
+
+  /* أزرار التنقل بين المحطات */
+  .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .tab-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+  }
+
+  .tab-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(15, 76, 92, 0.25);
+  }
+
+  .tab-section {
+    display: none;
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    animation: fadeIn 0.25s ease;
+  }
+
+  .tab-section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    color: var(--primary);
+    font-size: 1.32rem;
+    font-weight: 800;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* بطاقات المفاهيم */
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .method-card {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-right: 5px solid var(--accent);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .method-card.chem-card {
+    border-right-color: var(--secondary);
+    background: #fffbf7;
+  }
+
+  .method-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .method-card h3 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 1.08rem;
+  }
+
+  .prop-tag {
+    display: inline-block;
+    background: #e0f2fe;
+    color: #0369a1;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 2px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+
+  .prop-tag.chem-tag {
+    background: #ffedd5;
+    color: #c2410c;
+  }
+
+  /* المختبر الافتراضي والمحاكاة */
+  .lab-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .lab-select-btn {
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-light);
+    background: #ffffff;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.86rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .lab-select-btn.selected,
+  .lab-select-btn:hover {
+    background: var(--primary-light);
+    color: #ffffff;
+    box-shadow: 0 3px 8px rgba(26, 107, 128, 0.25);
+  }
+
+  .sim-stage {
+    background: #f1f5f9;
+    border: 2px dashed #94a3b8;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .sim-visual {
+    max-width: 620px;
+    margin: 0 auto 14px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+  }
+
+  .action-btn {
+    background: var(--secondary);
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-size: 0.94rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 5px;
+  }
+
+  .action-btn:hover {
+    background: #c8530d;
+  }
+
+  .action-btn.secondary-btn {
+    background: var(--primary);
+  }
+
+  .action-btn.secondary-btn:hover {
+    background: #093540;
+  }
+
+  .sim-observation {
+    margin-top: 14px;
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    color: #065f46;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .sample-picker-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0 8px;
+  }
+
+  .sample-chip-btn {
+    padding: 7px 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--primary);
+    background: #ffffff;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.84rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .sample-chip-btn:hover,
+  .sample-chip-btn.active-chip {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+
+  /* بطاقات الأخطاء الشائعة */
+  .misconception-card {
+    border: 1px solid #fecaca;
+    background: #fffafa;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .misconception-card .wrong {
+    color: var(--danger);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .reveal-btn {
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 7px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .reveal-btn:hover {
+    background: #21867a;
+  }
+
+  .correction-box {
+    display: none;
+    margin-top: 10px;
+    background: var(--success-bg);
+    color: var(--success);
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+
+  /* جداول التمارين واختبر نفسي */
+  table.quiz-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+
+  table.quiz-table th,
+  table.quiz-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 12px;
+    text-align: center;
+  }
+
+  table.quiz-table th {
+    background: var(--primary);
+    color: #ffffff;
+  }
+
+  select.table-select {
+    width: 100%;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1.5px solid #94a3b8;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: #ffffff;
+    color: var(--text);
+  }
+
+  .project-box {
+    background: #f0f9ff;
+    border: 1.5px solid #7dd3fc;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .think-box {
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 22px;
+  }
+
+  /* أسئلة الاختبار الذاتي */
+  .question-item {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .question-item h4 {
+    margin: 0 0 10px;
+    color: var(--primary);
+    font-size: 1.05rem;
+  }
+
+  .option-label {
+    display: block;
+    padding: 8px 12px;
+    margin: 6px 0;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .option-label:hover {
+    border-color: var(--primary);
+    background: #f0f9ff;
+  }
+
+  .q-feedback {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: none;
+  }
+
+  /* بطاقة النتيجة والتقدير */
+  .result-card {
+    display: none;
+    margin-top: 20px;
+    border: 2px solid var(--primary);
+    border-radius: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    text-align: center;
+  }
+
+  .grade-pill {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 900;
+    padding: 8px 24px;
+    border-radius: 30px;
+    margin: 10px 0;
+    color: #ffffff;
+  }
+
+  .footer-links {
+    max-width: 1150px;
+    margin: 20px auto 0;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    display: inline-block;
+  }
+
+  .whatsapp-btn {
+    background: #16a34a;
+    color: #ffffff;
+  }
+
+  .whatsapp-btn:hover {
+    background: #15803d;
+  }
+
+  @media (max-width: 768px) {
+    .header-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .header-right,
+    .header-left {
+      text-align: center;
+    }
+  }
+
+  @media print {
+    .nav-tabs,
+    .action-btn,
+    .reveal-btn,
+    .footer-links,
+    .lab-controls {
+      display: none !important;
+    }
+    body {
+      background: #ffffff;
+    }
+    .tab-section {
+      display: none !important;
+      box-shadow: none;
+      border: 1px solid #999;
+      margin-bottom: 16px;
+    }
+    #tab5.tab-section.active {
+      display: block !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="keffiyeh-bar" aria-hidden="true"></div>
+
+<header class="official-header">
+  <div class="header-grid">
+    <div class="header-right">
+      <div>
+        <span class="pal-flag" title="علم فلسطين">
+          <span class="pal-flag-stripes"><span></span><span></span><span></span></span>
+          <span class="pal-flag-triangle"></span>
+        </span>
+        دولة فلسطين
+      </div>
+      <div>وزارة التربية والتعليم العالي</div>
+      <div>مديرية التربية والتعليم / طوباس</div>
+      <div>مدرسة ذكور طمون الأساسية العليا</div>
+    </div>
+
+    <div class="header-center">
+      <span class="badge">DZTech | MEMORY QUEST LAB</span>
+      <h1>بعض الخصائص الفيزيائية والكيميائية للعناصر</h1>
+      <div style="font-weight:700; color:#475569;">الصف السادس الأساسي • العلوم والحياة • الوحدة الثانية (الدرس الثاني)</div>
+    </div>
+
+    <div class="header-left">
+      <div>المعلم: أ. أمين عبدالرازق أبوطلال</div>
+      <div>الشعبة: ....................</div>
+      <div>التاريخ: <span id="todayDate"></span></div>
+      <div>
+        <span class="pal-flag" title="علم فلسطين">
+          <span class="pal-flag-stripes"><span></span><span></span><span></span></span>
+          <span class="pal-flag-triangle"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- شريط اسم الطالب ومؤشر التقدم -->
+  <div class="student-bar">
+    <div class="student-inputs">
+      <label for="studentName">اسم الطالب الرباعي:</label>
+      <input type="text" id="studentName" placeholder="اكتب اسمك هنا...">
+      <label for="studentSection">الشعبة:</label>
+      <input type="text" id="studentSection" style="width:80px;" placeholder="أ / ب">
+    </div>
+
+    <div class="progress-box">
+      <div class="progress-label">
+        <span>مؤشر إتقان المحطات</span>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- أزرار التنقل بين محطات الدرس -->
+  <nav class="nav-tabs" aria-label="محطات الدرس">
+    <button type="button" class="tab-btn active" data-tab-target="tab1">1. خريطة الخصائص</button>
+    <button type="button" class="tab-btn" data-tab-target="tab2">2. المختبر الافتراضي (10 أنشطة)</button>
+    <button type="button" class="tab-btn" data-tab-target="tab3">3. الأخطاء الشائعة</button>
+    <button type="button" class="tab-btn" data-tab-target="tab4">4. المشروع وأختبر نفسي وأفكر</button>
+    <button type="button" class="tab-btn" data-tab-target="tab5">5. الاختبار الذاتي الشامل</button>
+  </nav>
+
+  <!-- المحطة الأولى: شرح الخصائص الفيزيائية والكيميائية للعناصر -->
+  <section id="tab1" class="tab-section active">
+    <h2 class="section-title">🔬 المحطة الأولى: التمييز بين الخصائص الفيزيائية والكيميائية للعناصر</h2>
+    <p style="font-weight:600; color:#334155;">تُصنّف العناصر إلى <strong>فلزات</strong> (مثل: الحديد، النحاس، الألمنيوم، المغنيسيوم، الخارصين، الزئبق، الذهب، الفضة) و<strong>لافلزات</strong> (مثل: الكبريت، الكربون/الجرافيت، البروم، الأكسجين، النيتروجين، اليود، الفوسفور) بناءً على خصائصها الفيزيائية والكيميائية:</p>
+
+    <h3 style="color:var(--primary); margin-bottom:8px;">أولاً: الخصائص الفيزيائية (يمكن ملاحظتها أو قياسها دون تغيير في تركيب المادة)</h3>
+    <div class="methods-grid">
+      <div class="method-card">
+        <h3>1. الحالة الفيزيائية واللون</h3>
+        <span class="prop-tag">صلبة • سائلة • غازية</span>
+        <p>توجد معظم العناصر صلبة (كالكبريت الأصفر، الحديد الرمادي، النحاس الأحمر المائل للبني، الألمنيوم والمغنيسيوم الفضي، الكربون/الجرافيت الأسود)، وبعضها غازية (كالأكسجين، النيتروجين، الهيدروجين، الكلور)، وعنصران فقط سائلان في درجة حرارة الغرفة: <strong>الزئبق (فلز سائل فضي)</strong> و<strong>البروم (لافلز سائل بني محمر)</strong>.</p>
+      </div>
+
+      <div class="method-card">
+        <h3>2. اللمعان والبريق المعدني</h3>
+        <span class="prop-tag">خاصية سطحية مميزة</span>
+        <p>تمتاز <strong>الفلزات</strong> (مثل النحاس، الذهب، الفضة، الألمنيوم، الحديد، المغنيسيوم، والزئبق السائل) بلمعانها وبريقها المعدني عند صقلها، بينما تبدو <strong>اللافلزات الصلبة</strong> (مثل الكبريت، الكربون، اليود، الفوسفور) معتمة أو غير ذات بريق معدني.</p>
+      </div>
+
+      <div class="method-card">
+        <h3>3. القابلية للطرق والسحب والتشكيل</h3>
+        <span class="prop-tag">تشكيل الصفائح والأسلاك</span>
+        <p><strong>الفلزات</strong> قابلة للطرق والسحب والتشكيل دون أن تنكسر (كالألمنيوم والنحاس والذهب والفضة والحديد)، أما <strong>اللافلزات الصلبة</strong> (كالكبريت والكربون واليود) فهي <strong>هشّة</strong> تتفتت وتتكسر عند طرقها.</p>
+      </div>
+
+      <div class="method-card">
+        <h3>4. التوصيل الحراري والكهربائي</h3>
+        <span class="prop-tag">انتقال الحرارة والكهرباء</span>
+        <p><strong>الفلزات</strong> جيدة التوصيل للحرارة والكهرباء (كالنحاس والألمنيوم والفضة والحديد)، بينما <strong>اللافلزات</strong> رديئة التوصيل (باستثناء <strong>الكربون/الجرافيت</strong> الموصل للكهرباء والمستخدم في أقطاب البطاريات).</p>
+      </div>
+
+      <div class="method-card">
+        <h3>5. المغناطيسية ودرجة الانصهار</h3>
+        <span class="prop-tag">الانجذاب والانصهار</span>
+        <p>تنجذب عناصر محددة للمغناطيس مثل <strong>الحديد والكوبالت والنيكل</strong> دون غيرها. وتختلف درجات الانصهار؛ فالكبريت ينصهر عند نحو <strong>115°م</strong> والزئبق عند <strong>-39°م</strong>، بينما ترتفع في فلزات كالألمنيوم (~660°م)، النحاس (~1085°م)، والحديد (~1538°م).</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--secondary); margin:20px 0 8px;">ثانياً: الخصائص الكيميائية (تصف قدرة العنصر على التفاعل وتكوين مواد جديدة)</h3>
+    <div class="methods-grid">
+      <div class="method-card chem-card">
+        <h3>6. التفاعل مع الأكسجين (الاحتراق وتكوين الأكاسيد)</h3>
+        <span class="prop-tag chem-tag">خاصية كيميائية</span>
+        <p>يحترق شريط <strong>المغنيسيوم</strong> بلهب أبيض ساطع مكوّناً مسحوقاً أبيض (<strong>أكسيد المغنيسيوم</strong>)، ويحترق <strong>الكبريت</strong> بلهب أزرق مكوّناً غاز <strong>ثاني أكسيد الكبريت</strong>، ويحترق <strong>الكربون</strong> مكوّناً <strong>ثاني أكسيد الكربون</strong>.</p>
+      </div>
+
+      <div class="method-card chem-card">
+        <h3>7. صدأ الحديد (التآكل الكيميائي)</h3>
+        <span class="prop-tag chem-tag">تفاعل بوجود الماء والهواء</span>
+        <p>يتفاعل <strong>الحديد</strong> مع الأكسجين بوجود <strong>الماء (الرطوبة)</strong> ليتكوّن <strong>صدأ الحديد</strong> (مادة بنية هشة جديدة)، ولا يصدأ في هواء جاف فقط ولا في ماء خالٍ من الهواء، ويسرع في الماء المالح أو الرطوبة العالية.</p>
+      </div>
+
+      <div class="method-card chem-card">
+        <h3>8. التفاعل مع الحموض</h3>
+        <span class="prop-tag chem-tag">تصاعد غاز الهيدروجين</span>
+        <p>تتفاعل عناصر فلزية مثل <strong>الخارصين والمغنيسيوم والحديد</strong> مع حمض الهيدروكلوريك المخفف وتتصاعد فقاعات <strong>غاز الهيدروجين</strong>، بينما لا تتفاعل عناصر مثل الكبريت والكربون والنحاس مع الحموض المخففة العادية.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; text-align:left;">
+      <button type="button" class="action-btn" id="nextToLabBtn">أنهيت الفهم ← انتقل للمختبر الافتراضي (10 أنشطة)</button>
+    </div>
+  </section>
+
+  <!-- المحطة الثانية: المختبر الافتراضي الشامل (10 أنشطة عملية كاملة) -->
+  <section id="tab2" class="tab-section">
+    <h2 class="section-title">⚗️ المحطة الثانية: المختبر الافتراضي الشامل (جميع الأنشطة الـ 10)</h2>
+    <p style="font-weight:600; color:#475569; margin-top:0;">اختر النشاط المخبري من الأزرار العشرة أدناه، ثم اختر مجموعة العينات واضغط على زر التنفيذ لمشاهدة المحاكاة والملاحظة العلمية:</p>
+
+    <div class="lab-controls">
+      <button type="button" class="lab-select-btn selected" data-sim-btn="1">نشاط (1): الحالة الفيزيائية واللون</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="2">نشاط (2): اللمعان والبريق المعدني</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="3">نشاط (3): القابلية للطرق والسحب</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="4">نشاط (4): التوصيل الحراري</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="5">نشاط (5): التوصيل الكهربائي</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="6">نشاط (6): قابلية الانجذاب للمغناطيس</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="7">نشاط (7): درجة الانصهار</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="8">نشاط (8): احتراق المغنيسيوم والكبريت</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="9">نشاط (9): شروط صدأ الحديد</button>
+      <button type="button" class="lab-select-btn" data-sim-btn="10">نشاط (10): التفاعل مع الحموض</button>
+    </div>
+
+    <!-- نشاط 1: الحالة الفيزيائية واللون -->
+    <div id="simBox1" class="sim-stage">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (1): فحص الحالة الفيزيائية واللون للعناصر</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <polygon id="sim1SolidShape" points="60,150 110,95 155,150" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+          <text id="sim1SolidTitle" x="108" y="175" font-size="12" text-anchor="middle" fill="#854d0e" font-weight="bold">الكبريت (صلب - أصفر)</text>
+
+          <rect x="230" y="75" width="75" height="80" rx="8" fill="#f8fafc" stroke="#0f4c5c" stroke-width="3"/>
+          <rect id="sim1LiquidFill" x="233" y="115" width="69" height="37" fill="#94a3b8"/>
+          <text id="sim1LiquidTitle" x="268" y="175" font-size="12" text-anchor="middle" fill="#334155" font-weight="bold">الزئبق (سائل - فضي)</text>
+
+          <rect x="385" y="75" width="85" height="80" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+          <g id="o2Molecules" opacity="0.45">
+            <circle cx="410" cy="105" r="7" fill="#0284c7"/>
+            <circle cx="445" cy="125" r="7" fill="#0284c7"/>
+            <circle cx="425" cy="95" r="7" fill="#0284c7"/>
+          </g>
+          <text id="sim1GasTitle" x="428" y="175" font-size="12" text-anchor="middle" fill="#0369a1" font-weight="bold">الأكسجين (غاز - عديم اللون)</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim1-group="sulfur_hg_o2">الكبريت + الزئبق + الأكسجين</button>
+        <button type="button" class="sample-chip-btn" data-sim1-group="metals_br_n2">الحديد/النحاس/الألمنيوم + البروم + النيتروجين</button>
+        <button type="button" class="sample-chip-btn" data-sim1-group="mg_c_h2_cl2">المغنيسيوم/الكربون + الهيدروجين/الكلور</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim1RunBtn">فحص وتوضيح الحالات والألوان</button>
+        <button type="button" class="action-btn secondary-btn" id="sim1ResetBtn">إعادة</button>
+      </div>
+      <div id="obs1" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> توجد معظم العناصر صلبة كالكبريت (أصفر)، الحديد (رمادي)، النحاس (أحمر مائل للبني)، الألمنيوم والمغنيسيوم (فضي)، والكربون/الجرافيت (أسود). ويوجد عنصران فقط سائلان في درجة حرارة الغرفة: <strong>الزئبق</strong> (فلز سائل فضي) و<strong>البروم</strong> (لافلز سائل بني محمر)، بينما توجد عناصر مثل الأكسجين والنيتروجين والهيدروجين والكلور في الحالة الغازية.
+      </div>
+    </div>
+
+    <!-- نشاط 2: اللمعان والبريق -->
+    <div id="simBox2" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (2): اختبار اللمعان والبريق المعدني عند الصقل</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect id="copperBar" x="95" y="85" width="130" height="55" rx="8" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+          <polygon id="copperShine" points="115,85 140,85 120,140 95,140" fill="#fde68a" opacity="0"/>
+          <text id="sim2LeftLabel" x="160" y="168" font-size="12" text-anchor="middle" fill="#92400e" font-weight="bold">النحاس / الذهب / الفضة (فلزات)</text>
+
+          <polygon id="carbonChunk" points="350,140 385,80 445,85 460,140" fill="#334155" stroke="#0f172a" stroke-width="2"/>
+          <text id="sim2RightLabel" x="405" y="168" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">الكبريت / الكربون / اليود (لافلزات)</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim2-group="cu_c">النحاس مقابل الكربون</button>
+        <button type="button" class="sample-chip-btn" data-sim2-group="au_ag_s">الذهب والفضة مقابل الكبريت</button>
+        <button type="button" class="sample-chip-btn" data-sim2-group="al_fe_mg_i">الألمنيوم/الحديد/المغنيسيوم مقابل اليود</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim2RunBtn">صقل العينات بورق الصنفرة</button>
+        <button type="button" class="action-btn secondary-btn" id="sim2ResetBtn">إعادة</button>
+      </div>
+      <div id="obs2" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> عند صقل الفلزات مثل النحاس، الفضة، الذهب، الألمنيوم، الحديد، المغنيسيوم (وكذلك الزئبق السائل) يظهر بريق ولمعان معدني واضح، بينما تبدو اللافلزات الصلبة مثل الكبريت، الكربون، واليود معتمة أو غير ذات بريق معدني.
+      </div>
+    </div>
+
+    <!-- نشاط 3: القابلية للطرق والسحب والتشكيل -->
+    <div id="simBox3" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (3): اختبار القابلية للطرق والسحب والتشكيل</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <g id="hammerGroup" transform="translate(0, 0)">
+            <rect x="143" y="24" width="14" height="32" rx="3" fill="#92400e"/>
+            <rect x="128" y="14" width="44" height="14" rx="4" fill="#334155"/>
+          </g>
+
+          <rect id="aluShape" x="105" y="95" width="90" height="45" rx="6" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+          <text id="sim3LeftLabel" x="150" y="170" font-size="12" text-anchor="middle" fill="#0f4c5c" font-weight="bold">الألمنيوم (فلز قابل للطرق)</text>
+
+          <g id="sulfurWhole">
+            <rect id="sim3NonMetalBox" x="355" y="95" width="80" height="45" rx="6" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+          </g>
+          <g id="sulfurCrushed" opacity="0">
+            <circle id="sim3Frag1" cx="360" cy="130" r="7" fill="#facc15"/>
+            <circle id="sim3Frag2" cx="380" cy="134" r="6" fill="#eab308"/>
+            <circle id="sim3Frag3" cx="402" cy="128" r="8" fill="#facc15"/>
+            <circle id="sim3Frag4" cx="425" cy="133" r="6" fill="#eab308"/>
+            <circle id="sim3Frag5" cx="390" cy="118" r="5" fill="#facc15"/>
+          </g>
+          <text id="sim3RightLabel" x="395" y="170" font-size="12" text-anchor="middle" fill="#854d0e" font-weight="bold">الكبريت (لافلز هش يتفتت)</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim3-group="al_s">الألمنيوم مقابل الكبريت</button>
+        <button type="button" class="sample-chip-btn" data-sim3-group="cu_au_ag_c">النحاس والذهب والفضة مقابل الكربون</button>
+        <button type="button" class="sample-chip-btn" data-sim3-group="fe_i">الحديد مقابل اليود</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim3RunBtn">الطرق بالمطرقة على العينات</button>
+        <button type="button" class="action-btn secondary-btn" id="sim3ResetBtn">إعادة</button>
+      </div>
+      <div id="obs3" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات قابلة للطرق والسحب والتشكيل دون أن تتكسر؛ فالألمنيوم يُطرق لرقائق وأواني، والنحاس يُطرق ويُسحب لأسلاك، والذهب والفضة من أكثر العناصر قابلية للطرق والسحب لصناعة الصفائح والأسلاك الدقيقة، ويُطرق الحديد أيضاً، بينما اللافلزات الصلبة كالكبريت والكربون واليود هشة تتكسر وتتفتت عند طرقها.
+      </div>
+    </div>
+
+    <!-- نشاط 4: التوصيل الحراري -->
+    <div id="simBox4" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (4): اختبار التوصيل الحراري للعناصر</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <path id="heatFlame" d="M85 110 Q100 130 85 145 Q70 130 85 110 Z" fill="#cbd5e1"/>
+          <rect x="65" y="145" width="40" height="12" fill="#475569"/>
+
+          <rect id="sim4CondRod" x="105" y="102" width="260" height="12" rx="4" fill="#d97706"/>
+          <circle id="waxDrop1" cx="350" cy="118" r="7" fill="#fef08a" stroke="#ca8a04"/>
+          <text id="sim4TopLabel" x="235" y="92" font-size="12" text-anchor="middle" fill="#92400e" font-weight="bold">النحاس / الألمنيوم / الحديد + شمع</text>
+
+          <rect id="sim4InsRod" x="105" y="138" width="260" height="12" rx="4" fill="#334155"/>
+          <circle id="waxDrop2" cx="350" cy="154" r="7" fill="#fef08a" stroke="#ca8a04"/>
+          <text id="sim4BotLabel" x="235" y="174" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">الكربون / الكبريت / الخشب + شمع</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim4-group="cu_c">النحاس مقابل الكربون</button>
+        <button type="button" class="sample-chip-btn" data-sim4-group="al_fe_s">الألمنيوم والحديد مقابل الكبريت</button>
+        <button type="button" class="sample-chip-btn" data-sim4-group="ag_wood">الفضة مقابل الكبريت والخشب</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim4RunBtn">تسخين طرفي الساقين</button>
+        <button type="button" class="action-btn secondary-btn" id="sim4ResetBtn">إعادة</button>
+      </div>
+      <div id="obs4" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات مثل النحاس، الألمنيوم، الفضة، والحديد جيدة التوصيل للحرارة وتُستخدم في أواني الطهي والمبادلات الحرارية فتسقط قطعة الشمع سريعاً، بينما اللافلزات والمواد الأخرى كالكبريت، الكربون، والخشب رديئة التوصيل للحرارة.
+      </div>
+    </div>
+
+    <!-- نشاط 5: التوصيل الكهربائي -->
+    <div id="simBox5" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (5): اختبار التوصيل الكهربائي (الدارة الكهربائية)</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect x="75" y="85" width="55" height="35" rx="4" fill="#1e293b"/>
+          <rect x="130" y="95" width="8" height="15" fill="#e36414"/>
+          <text x="102" y="140" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">بطارية</text>
+
+          <polyline points="138,102 220,102" fill="none" stroke="#0f4c5c" stroke-width="3"/>
+          <polyline points="320,102 420,102 420,165 102,165 102,120" fill="none" stroke="#0f4c5c" stroke-width="3"/>
+
+          <rect id="testSample" x="220" y="92" width="100" height="20" rx="4" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+          <text id="sampleLabel" x="270" y="82" font-size="12" text-anchor="middle" fill="#0f4c5c" font-weight="bold">اختر عنصراً للفحص</text>
+
+          <circle id="bulbGlow" cx="420" cy="102" r="22" fill="#e2e8f0" stroke="#475569" stroke-width="3"/>
+          <text x="420" y="70" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">مصباح كهربائي</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn" data-sim5-type="iron_cu_al">الحديد / النحاس / الألمنيوم</button>
+        <button type="button" class="sample-chip-btn" data-sim5-type="carbon">الكربون (الجرافيت)</button>
+        <button type="button" class="sample-chip-btn" data-sim5-type="sulfur_iodine">الكبريت / اليود</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn secondary-btn" id="sim5ResetBtn">إعادة</button>
+      </div>
+      <div id="obs5" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات (الحديد، النحاس، الألمنيوم) جيدة التوصيل للكهرباء فتُضيء المصباح، وكذلك <strong>الكربون (الجرافيت)</strong> فهو لافلز موصل للكهرباء، بينما الكبريت واليود رديئة التوصيل للكهرباء فلا يُضيء المصباح.
+      </div>
+    </div>
+
+    <!-- نشاط 6: قابلية الانجذاب للمغناطيس -->
+    <div id="simBox6" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (6): اختبار قابلية الانجذاب للمغناطيس</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect x="225" y="25" width="110" height="32" rx="6" fill="#dc2626"/>
+          <rect x="280" y="25" width="55" height="32" rx="6" fill="#2563eb"/>
+          <text x="280" y="46" font-size="13" text-anchor="middle" fill="#ffffff" font-weight="bold">مغناطيس</text>
+
+          <g id="ironNails" transform="translate(0, 0)">
+            <rect x="120" y="155" width="60" height="8" rx="3" fill="#475569"/>
+            <text id="sim6MagLabel" x="150" y="185" font-size="11" text-anchor="middle" fill="#1e293b" font-weight="bold">الحديد / النيكل / الكوبالت</text>
+          </g>
+
+          <rect x="260" y="155" width="45" height="8" rx="3" fill="#d97706"/>
+          <text x="282" y="185" font-size="11" text-anchor="middle" fill="#92400e" font-weight="bold">النحاس / الألمنيوم</text>
+
+          <circle cx="410" cy="158" r="14" fill="#facc15"/>
+          <text x="410" y="185" font-size="11" text-anchor="middle" fill="#854d0e" font-weight="bold">الكبريت</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim6-group="fe_ni_co">الحديد والنيكل والكوبالت</button>
+        <button type="button" class="sample-chip-btn" data-sim6-group="cu_al_s">النحاس والألمنيوم والكبريت</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim6RunBtn">تقريب المغناطيس من العينات</button>
+        <button type="button" class="action-btn secondary-btn" id="sim6ResetBtn">إعادة</button>
+      </div>
+      <div id="obs6" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> تنجذب عناصر محددة للمغناطيس مثل <strong>الحديد، النيكل، والكوبالت</strong>، بينما لا تنجذب إليه عناصر النحاس، الألمنيوم، والكبريت.
+      </div>
+    </div>
+
+    <!-- نشاط 7: درجة الانصهار -->
+    <div id="simBox7" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (7): مقارنة درجة الانصهار للفلزات واللافلزات</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect id="sulfurMeltBox" x="115" y="95" width="100" height="45" rx="8" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+          <text id="sim7LowLabel" x="165" y="165" font-size="12" text-anchor="middle" fill="#854d0e" font-weight="bold">الكبريت (115°م)</text>
+
+          <rect id="sim7HighBox" x="335" y="95" width="100" height="45" rx="8" fill="#64748b" stroke="#334155" stroke-width="2"/>
+          <text id="sim7HighLabel" x="385" y="165" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">الحديد (1538°م)</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim7-group="s_fe">الكبريت (115°م) مقابل الحديد (1538°م)</button>
+        <button type="button" class="sample-chip-btn" data-sim7-group="nonmetals_metals">اللافلزات مقابل الفلزات</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim7RunBtn">تسخين العينات ومقارنة الانصهار</button>
+        <button type="button" class="action-btn secondary-btn" id="sim7ResetBtn">إعادة</button>
+      </div>
+      <div id="obs7" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> ينصهر <strong>الكبريت</strong> عند نحو <strong>115°م</strong>، بينما يمتاز <strong>الحديد</strong> بدرجة انصهار مرتفعة جداً تقارب <strong>1538°م</strong>؛ وبوجه عام تمتاز الفلزات بارتفاع درجات انصهارها مقارنة باللافلزات.
+      </div>
+    </div>
+
+    <!-- نشاط 8: التفاعل مع الأكسجين -->
+    <div id="simBox8" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (8): التفاعل مع الأكسجين وتكوين الأكاسيد</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect x="135" y="55" width="10" height="75" fill="#94a3b8"/>
+          <circle id="mgFlash" cx="140" cy="130" r="22" fill="#ffffff" stroke="#fde047" stroke-width="4" opacity="0"/>
+          <ellipse id="mgAsh" cx="140" cy="175" rx="28" ry="8" fill="#f1f5f9" stroke="#cbd5e1" opacity="0"/>
+          <text x="140" y="200" font-size="12" text-anchor="middle" fill="#0f4c5c" font-weight="bold">شريط المغنيسيوم</text>
+
+          <ellipse cx="400" cy="155" rx="30" ry="10" fill="#facc15"/>
+          <path id="sulfurBlueFlame" d="M400 110 Q416 135 400 155 Q384 135 400 110 Z" fill="#3b82f6" opacity="0"/>
+          <text id="sim8RightLabel" x="400" y="200" font-size="12" text-anchor="middle" fill="#1d4ed8" font-weight="bold">مسحوق الكبريت</text>
+        </svg>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim8MgBtn">إشعال شريط المغنيسيوم</button>
+        <button type="button" class="action-btn" id="sim8SulfurBtn">إشعال مسحوق الكبريت</button>
+        <button type="button" class="action-btn secondary-btn" id="sim8ResetBtn">إعادة</button>
+      </div>
+      <div id="obs8" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> يحترق شريط <strong>المغنيسيوم</strong> بلهب أبيض ساطع مكوّناً <strong>أكسيد المغنيسيوم</strong> (مسحوق أبيض)، ويحترق <strong>الكبريت</strong> بلهب أزرق ويتصاعد غاز <strong>ثاني أكسيد الكبريت</strong>؛ وكلاهما تفاعل كيميائي ينتج مواد جديدة.
+      </div>
+    </div>
+
+    <!-- نشاط 9: صدأ الحديد -->
+    <div id="simBox9" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (9): استقصاء شروط صدأ الحديد</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 580 220" width="100%" height="205">
+          <rect x="85" y="45" width="55" height="125" rx="10" fill="#f8fafc" stroke="#0f4c5c" stroke-width="2"/>
+          <rect x="108" y="85" width="9" height="65" fill="#64748b"/>
+          <text x="112" y="190" font-size="11" text-anchor="middle" fill="#1e293b" font-weight="bold">1. هواء جاف فقط</text>
+
+          <rect x="255" y="45" width="55" height="125" rx="10" fill="#e0f2fe" stroke="#0f4c5c" stroke-width="2"/>
+          <rect x="257" y="75" width="51" height="10" fill="#facc15"/>
+          <rect x="278" y="95" width="9" height="65" fill="#64748b"/>
+          <text x="282" y="190" font-size="11" text-anchor="middle" fill="#1e293b" font-weight="bold">2. ماء مغلي + زيت</text>
+
+          <rect x="425" y="45" width="55" height="125" rx="10" fill="#e0f2fe" stroke="#0f4c5c" stroke-width="2"/>
+          <rect id="rustyNail" x="448" y="85" width="9" height="65" fill="#64748b"/>
+          <text id="sim9Tube3Label" x="452" y="190" font-size="11" text-anchor="middle" fill="#b91c1c" font-weight="bold">3. ماء + هواء (رطوبة)</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim9-mode="normal_water">الأنبوب (3): ماء + هواء</button>
+        <button type="button" class="sample-chip-btn" data-sim9-mode="salt_water">الأنبوب (3): ماء مالح / رطوبة عالية</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim9RunBtn">مراقبة الأنابيب بعد عدة أيام</button>
+        <button type="button" class="action-btn secondary-btn" id="sim9ResetBtn">إعادة</button>
+      </div>
+      <div id="obs9" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> يصدأ الحديد في الأنبوب (3) فقط لتوفر <strong>الماء والهواء معاً</strong>، ولا يصدأ في الأنبوب (1) لغياب الماء (هواء جاف فقط) ولا في الأنبوب (2) لغياب الهواء (ماء مغلي مغطى بالزيت).
+      </div>
+    </div>
+
+    <!-- نشاط 10: التفاعل مع الحموض -->
+    <div id="simBox10" class="sim-stage" style="display:none;">
+      <h3 style="color:var(--primary); margin-top:0;">نشاط (10): تفاعل بعض العناصر مع حمض الهيدروكلوريك المخفف</h3>
+      <div class="sim-visual">
+        <svg viewBox="0 0 560 220" width="100%" height="205">
+          <rect x="130" y="45" width="60" height="130" rx="10" fill="#e0f2fe" stroke="#0f4c5c" stroke-width="2"/>
+          <rect id="sim10ActiveMetal" x="145" y="150" width="30" height="15" rx="3" fill="#64748b"/>
+          <g id="h2Bubbles" opacity="0">
+            <circle cx="152" cy="135" r="4" fill="#ffffff" stroke="#0284c7"/>
+            <circle cx="165" cy="115" r="5" fill="#ffffff" stroke="#0284c7"/>
+            <circle cx="155" cy="95" r="4" fill="#ffffff" stroke="#0284c7"/>
+            <circle cx="168" cy="75" r="5" fill="#ffffff" stroke="#0284c7"/>
+          </g>
+          <text id="sim10LeftLabel" x="160" y="195" font-size="12" text-anchor="middle" fill="#0f4c5c" font-weight="bold">الخارصين / المغنيسيوم + حمض</text>
+
+          <rect x="360" y="45" width="60" height="130" rx="10" fill="#e0f2fe" stroke="#0f4c5c" stroke-width="2"/>
+          <rect x="375" y="150" width="30" height="15" rx="3" fill="#facc15"/>
+          <text id="sim10RightLabel" x="390" y="195" font-size="12" text-anchor="middle" fill="#854d0e" font-weight="bold">الكبريت / الكربون + حمض</text>
+        </svg>
+      </div>
+      <div class="sample-picker-row">
+        <button type="button" class="sample-chip-btn active-chip" data-sim10-group="zn_mg">الخارصين / المغنيسيوم</button>
+        <button type="button" class="sample-chip-btn" data-sim10-group="s_c">الكبريت / الكربون</button>
+      </div>
+      <div>
+        <button type="button" class="action-btn" id="sim10RunBtn">إضافة حمض الهيدروكلوريك المخفف</button>
+        <button type="button" class="action-btn secondary-btn" id="sim10ResetBtn">إعادة</button>
+      </div>
+      <div id="obs10" class="sim-observation">
+        <strong>الملاحظة العلمية والاستنتاج:</strong> يتفاعل <strong>الخارصين</strong> أو <strong>المغنيسيوم</strong> مع حمض الهيدروكلوريك المخفف وتتصاعد فقاعات <strong>غاز الهيدروجين</strong>، بينما لا تتفاعل عناصر مثل <strong>الكبريت</strong> أو <strong>الكربون</strong> مع الحمض المخفف.
+      </div>
+    </div>
+
+    <div style="margin-top:20px; text-align:left;">
+      <button type="button" class="action-btn" id="nextToMisconceptionsBtn">أنهيت المختبر ← انتقل للأخطاء الشائعة</button>
+    </div>
+  </section>
+
+  <!-- المحطة الثالثة: الأخطاء الشائعة -->
+  <section id="tab3" class="tab-section">
+    <h2 class="section-title">🚨 المحطة الثالثة: اكتشاف الأخطاء الشائعة وتصحيحها</h2>
+    <p style="font-weight:600;">اقرأ كل خطأ يقع فيه الطلبة، فكّر في السبب العلمي، ثم اضغط على زر <strong>اكتشف التصحيح العلمي</strong>:</p>
+
+    <div class="misconception-card">
+      <div class="wrong">❌ الخطأ (1): الاعتقاد بأن جميع اللافلزات رديئة التوصيل للكهرباء دون استثناء.</div>
+      <button type="button" class="reveal-btn" data-corr-target="corr1">اكتشف التصحيح العلمي</button>
+      <div class="correction-box" id="corr1">
+        ✅ التصحيح: معظم اللافلزات رديئة التوصيل للكهرباء، ولكن <strong>الكربون (على شكل الجرافيت)</strong> عنصر لافلزي موصل جيد للكهرباء، لذلك يُستخدم في صناعة أقطاب البطاريات الجافة.
+      </div>
+    </div>
+
+    <div class="misconception-card">
+      <div class="wrong">❌ الخطأ (2): الظن بأن صدأ الحديد تغير فيزيائي لأنه يغير لون الحديد فقط.</div>
+      <button type="button" class="reveal-btn" data-corr-target="corr2">اكتشف التصحيح العلمي</button>
+      <div class="correction-box" id="corr2">
+        ✅ التصحيح: صدأ الحديد <strong>خاصية وتفاعل كيميائي</strong>؛ لأن الحديد يتفاعل مع الأكسجين بوجود الماء وتنتج مادة جديدة (أكسيد الحديد) هشة ومختلفة كلياً عن الحديد الصلب اللامع.
+      </div>
+    </div>
+
+    <div class="misconception-card">
+      <div class="wrong">❌ الخطأ (3): الاعتقاد بأن جميع الفلزات صلبة في درجة حرارة الغرفة.</div>
+      <button type="button" class="reveal-btn" data-corr-target="corr3">اكتشف التصحيح العلمي</button>
+      <div class="correction-box" id="corr3">
+        ✅ التصحيح: جميع الفلزات صلبة ما عدا <strong>الزئبق</strong> فهو الفلز الوحيد السائل في درجة حرارة الغرفة (ويُستخدم في موازين الحرارة).
+      </div>
+    </div>
+
+    <div class="misconception-card">
+      <div class="wrong">❌ الخطأ (4): الاعتقاد بأن المغناطيس يجذب جميع الفلزات مثل النحاس والألمنيوم والذهب.</div>
+      <button type="button" class="reveal-btn" data-corr-target="corr4">اكتشف التصحيح العلمي</button>
+      <div class="correction-box" id="corr4">
+        ✅ التصحيح: المغناطيس يجذب عناصر محددة مثل <strong>الحديد والكوبالت والنيكل</strong>، بينما لا تنجذب إليه فلزات أخرى مثل النحاس والألمنيوم والذهب.
+      </div>
+    </div>
+
+    <div style="margin-top:20px; text-align:left;">
+      <button type="button" class="action-btn" id="nextToActivitiesBtn">أنهيت الأخطاء الشائعة ← انتقل للمشروع وأختبر نفسي وأفكر</button>
+    </div>
+  </section>
+
+  <!-- المحطة الرابعة: المشروع (ص55) + أختبر نفسي (ص60) + حل أفكر (ص62) -->
+  <section id="tab4" class="tab-section">
+    <h2 class="section-title">📘 المحطة الرابعة: مشروع (صفحة 55) • أختبر نفسي (صفحة 60) • أفكر (صفحة 62)</h2>
+
+    <!-- مشروع صفحة 55 -->
+    <div class="project-box">
+      <h3 style="color:#0369a1; margin-top:0;">🛠️ مشروع (صفحة 55): تصميم دائرة كهربائية لفحص التوصيل الكهربائي للعناصر</h3>
+      <p style="font-weight:600; margin-bottom:8px;"><strong>الهدف من المشروع:</strong> توظيف خاصية التوصيل الكهربائي للتمييز عملياً بين العناصر الموصلة (الفلزات والجرافيت) والعناصر العازلة (معظم اللافلزات).</p>
+      <ul style="font-weight:600; color:#1e293b; margin-top:0;">
+        <li><strong>الأدوات اللازمة:</strong> بطارية جافة (1.5 أو 3 فولت)، مصباح كهربائي صغير مع قاعدته، أسلاك توصيل معزولة بملاقط، وعينات عناصر (شريط ألمنيوم، سلك نحاس، مسمار حديد، قطعة كبريت، قلم رصاص مبري من الطرفين لإظهار الجرافيت).</li>
+        <li><strong>خطوات التنفيذ والاستنتاج:</strong> نُركّب دارة كهربائية بسيطة مفتوحة الطرفين، ونصل كل عنصر بين الملقطين؛ إضاءة المصباح تدل على أن العنصر <strong>موصل للكهرباء</strong>، وعدم إضاءته تدل على أنه <strong>عازل (رديء التوصيل)</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- أختبر نفسي صفحة 60 -->
+    <h3 style="color:var(--primary);">📋 أختبر نفسي (صفحة 60): تصنيف الخصائص والمقارنة بين الفلزات واللافلزات</h3>
+    <p style="font-weight:600; color:#475569;">اختر التصنيف الصحيح لكل خاصية أو عنصر في الجدول أدناه، ثم اضغط على <strong>تحقق من إجابات أختبر نفسي</strong>:</p>
+
+    <div style="overflow-x:auto;">
+      <table class="quiz-table" id="chartTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>العبارة / الخاصية / العنصر</th>
+            <th>التصنيف العلمي الصحيح</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>قابليّة عنصر النحاس للسحب على شكل أسلاك رفيعة</td>
+            <td>
+              <select class="table-select" data-ans="خاصية فيزيائية">
+                <option value="">-- اختر التصنيف --</option>
+                <option value="خاصية فيزيائية">خاصية فيزيائية</option>
+                <option value="خاصية كيميائية">خاصية كيميائية</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>تكوّن طبقة بنية هشة (الصدأ) على الحديد عند تعرضه للهواء الرطب</td>
+            <td>
+              <select class="table-select" data-ans="خاصية كيميائية">
+                <option value="">-- اختر التصنيف --</option>
+                <option value="خاصية فيزيائية">خاصية فيزيائية</option>
+                <option value="خاصية كيميائية">خاصية كيميائية</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>احتراق شريط المغنيسيوم بلهب أبيض ساطع وتكوّن مادة جديدة</td>
+            <td>
+              <select class="table-select" data-ans="خاصية كيميائية">
+                <option value="">-- اختر التصنيف --</option>
+                <option value="خاصية فيزيائية">خاصية فيزيائية</option>
+                <option value="خاصية كيميائية">خاصية كيميائية</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>انصهار قطعة من الكبريت عند درجة حرارة 115°م</td>
+            <td>
+              <select class="table-select" data-ans="خاصية فيزيائية">
+                <option value="">-- اختر التصنيف --</option>
+                <option value="خاصية فيزيائية">خاصية فيزيائية</option>
+                <option value="خاصية كيميائية">خاصية كيميائية</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>تفاعل الخارصين مع حمض الهيدروكلوريك المخفف وتصاعد فقاعات غاز</td>
+            <td>
+              <select class="table-select" data-ans="خاصية كيميائية">
+                <option value="">-- اختر التصنيف --</option>
+                <option value="خاصية فيزيائية">خاصية فيزيائية</option>
+                <option value="خاصية كيميائية">خاصية كيميائية</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>الزئبق: عنصر سائل لامع موصل للحرارة والكهرباء</td>
+            <td>
+              <select class="table-select" data-ans="فلز">
+                <option value="">-- اختر نوع العنصر --</option>
+                <option value="فلز">فلز</option>
+                <option value="لافلز">لافلز</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>الكبريت: عنصر صلب أصفر هش غير موصل للكهرباء</td>
+            <td>
+              <select class="table-select" data-ans="لافلز">
+                <option value="">-- اختر نوع العنصر --</option>
+                <option value="فلز">فلز</option>
+                <option value="لافلز">لافلز</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>الجرافيت (الكربون): عنصر هش غير لامع ولكنه موصل للكهرباء</td>
+            <td>
+              <select class="table-select" data-ans="لافلز">
+                <option value="">-- اختر نوع العنصر --</option>
+                <option value="فلز">فلز</option>
+                <option value="لافلز">لافلز</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:14px;">
+      <button type="button" class="action-btn" id="checkChartBtn">تحقق من إجابات أختبر نفسي (صفحة 60)</button>
+      <span id="chartFeedback" style="font-weight:800; margin-right:12px;"></span>
+    </div>
+
+    <!-- حل موضوع أفكر صفحة 62 -->
+    <div class="think-box">
+      <h3 style="color:#b45309; margin-top:0;">💡 حل موضوع (أُفكّر - صفحة 62): حماية الهياكل الحديدية من الصدأ</h3>
+      <p style="font-weight:700; color:#1e293b; margin-bottom:8px;">
+        السؤال: تُصنع الجسور وأبواب المنازل وهياكل السفن من الحديد لقوته ومتانته، ولكنها تتعرض للصدأ والتآكل مع مرور الزمن؛ فكيف نمنع صدأ الحديد ونحافظ عليه؟
+      </p>
+      <button type="button" class="reveal-btn" data-corr-target="thinkSol">اعرض الإجابة النموذجية الكاملة</button>
+      <div class="correction-box" id="thinkSol">
+        ✅ <strong>الإجابة النموذجية:</strong> لمنع حدوث صدأ الحديد، يجب <strong>عزل الحديد عن الماء (الرطوبة) والهواء (الأكسجين)</strong> معاً، وذلك بعدة طرائق عملية منها:
+        <br>1. <strong>الطلاء بالدهان أو الورنيش:</strong> مثل طلاء الأبواب والجسور الحديدية بطبقة عازلة تمنع وصول الماء والهواء إليها.
+        <br>2. <strong>التشحيم والتزييت:</strong> تغطية أجزاء الآلات وسلاسل الدراجات بطبقة من الزيت أو الشحم.
+        <br>3. <strong>الجلفنة (الطلاء بفلز مقاوم للصدأ):</strong> تغطية الحديد بطبقة رقيقة من الخارصين أو القصدير أو الكروم لحمايته من التآكل.
+      </div>
+    </div>
+
+    <div style="margin-top:20px; text-align:left;">
+      <button type="button" class="action-btn secondary-btn" id="nextToQuizBtn">أنهيت المحطة الرابعة ← انتقل للاختبار الذاتي الشامل</button>
+    </div>
+  </section>
+
+  <!-- المحطة الخامسة: الاختبار الذاتي مع التصحيح الفوري وسجل التقدير -->
+  <section id="tab5" class="tab-section">
+    <h2 class="section-title">🏆 المحطة الخامسة: الاختبار الذاتي الشامل (تصحيح فوري)</h2>
+    <p style="font-weight:600; color:#475569;">أجب عن جميع الأسئلة العشرة بدقة، ثم اضغط على زر <strong>تصحيح الاختبار وإظهار النتيجة</strong>:</p>
+
+    <div id="quizContainer"></div>
+
+    <div style="margin-top:20px; text-align:center;">
+      <button type="button" class="action-btn" style="font-size:1.1rem; padding:12px 30px;" id="gradeQuizBtn">✅ تصحيح الاختبار وإظهار النتيجة</button>
+      <button type="button" class="action-btn secondary-btn" id="resetQuizBtn">🔄 إعادة المحاولة</button>
+    </div>
+
+    <div id="resultCard" class="result-card">
+      <h3 style="margin-top:0; color:var(--primary);">بطاقة إتقان درس: بعض الخصائص الفيزيائية والكيميائية للعناصر</h3>
+      <p style="font-size:1.05rem; font-weight:700;">الطالب: <span id="resStudentName">---</span> | الشعبة: <span id="resStudentSection">---</span></p>
+      <div style="font-size:1.8rem; font-weight:900; color:var(--primary);" id="resScoreText">0 / 100</div>
+      <div id="resGradeBadge" class="grade-pill">---</div>
+      <p id="resRemedialPlan" style="font-weight:700; max-width:650px; margin:10px auto; color:#334155;"></p>
+      <button type="button" class="action-btn secondary-btn" id="printResultBtn">🖨️ طباعة بطاقة النتيجة</button>
+    </div>
+  </section>
+
+  <!-- أزرار العودة وقناة النادي العلمي -->
+  <div class="footer-links">
+    <div>
+      <button type="button" class="action-btn secondary-btn" style="margin:0;" id="homeReturnBtn">🏠 العودة للصفحة الرئيسة</button>
+    </div>
+    <div style="font-weight:700; color:var(--primary);">
+      إعداد: المعلم أ. أمين عبدالرازق أبوطلال • DZTech
+    </div>
+    <div>
+      <a class="whatsapp-btn" href="https://whatsapp.com/channel/0029Vb9Rgz8Bfxo6P7KhQr3l" target="_blank" rel="noopener noreferrer">📢 قناة النادي العلمي على الواتساب</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="keffiyeh-bar" aria-hidden="true"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // التاريخ الحالي
+    const todayEl = document.getElementById("todayDate");
+    if (todayEl) {
+      todayEl.textContent = new Date().toLocaleDateString("ar-EG");
+    }
+
+    // أسئلة الاختبار الذاتي الشامل (10 أسئلة تغطي الدرس كاملاً)
+    const questions = [
+      {
+        q: "1. أيٌّ من الآتي يُعد خاصية كيميائية للعنصر؟",
+        options: ["اللون واللمعان", "درجة الانصهار", "التفاعل مع الأكسجين وتكوين الصدأ", "التوصيل الحراري"],
+        answer: 2,
+        explanation: "التفاعل مع الأكسجين وتكوين صدأ الحديد ينتج عنه مادة جديدة، لذا فهو خاصية كيميائية."
+      },
+      {
+        q: "2. الفلز الوحيد الذي يوجد في الحالة السائلة في درجة حرارة الغرفة هو:",
+        options: ["البروم", "الزئبق", "الألمنيوم", "الكبريت"],
+        answer: 1,
+        explanation: "الزئبق هو الفلز الوحيد السائل في درجة حرارة الغرفة، بينما البروم لافلز سائل."
+      },
+      {
+        q: "3. العنصر اللافلزي الذي يمتاز بقدرته على توصيل التيار الكهربائي هو:",
+        options: ["الكبريت", "الأكسجين", "الكربون (الجرافيت)", "النيتروجين"],
+        answer: 2,
+        explanation: "الجرافيت (الكربون) عنصر لافلزي موصل للكهرباء ويُستخدم في أقطاب البطاريات."
+      },
+      {
+        q: "4. عند طرق قطعة من الكبريت الصلب بالمطرقة فإنها:",
+        options: ["تتحول إلى صفيحة رقيقة", "تتفتت لأنها هشة", "تُصدر لمعاناً معدنياً", "تنجذب للمغناطيس"],
+        answer: 1,
+        explanation: "اللافلزات الصلبة مثل الكبريت هشة غير قابلة للطرق والسحب فتتفتت عند طرقها."
+      },
+      {
+        q: "5. أي العناصر الآتية ينجذب إلى المغناطيس؟",
+        options: ["النحاس", "الحديد", "الكبريت", "الألمنيوم"],
+        answer: 1,
+        explanation: "الحديد (وكذلك الكوبالت والنيكل) ينجذب إلى المغناطيس."
+      },
+      {
+        q: "6. عند احتراق شريط المغنيسيوم في الهواء فإنه يشتعل بلهب:",
+        options: ["أزرق باهت", "أبيض ساطع ويتكوّن مسحوق أبيض", "أخضر دون نواتج", "لا يحترق أبداً"],
+        answer: 1,
+        explanation: "يحترق المغنيسيوم بلهب أبيض ساطع مكوناً أكسيد المغنيسيوم الأبيض."
+      },
+      {
+        q: "7. الشرطان الأساسيان لحدوث صدأ الحديد معاً هما وجود:",
+        options: ["الضوء والحرارة فقط", "الماء (الرطوبة) والهواء (الأكسجين)", "الزيت والماء", "النيتروجين والزيت"],
+        answer: 1,
+        explanation: "لا يصدأ الحديد في الهواء الجاف وحده ولا في الماء الخالي من الهواء؛ بل يلزم وجود الماء والأكسجين معاً."
+      },
+      {
+        q: "8. الغاز المتصاعد عند تفاعل عنصر الخارصين مع حمض الهيدروكلوريك المخفف هو:",
+        options: ["الأكسجين", "الهيدروجين", "النيتروجين", "بخار الماء"],
+        answer: 1,
+        explanation: "تتفاعل الفلزات النشطة كالخارصين مع الحموض المخففة ويتصاعد غاز الهيدروجين."
+      },
+      {
+        q: "9. تُصنع أسلاك التوصيل الكهربائي غالباً من عنصر النحاس لأنه:",
+        options: ["هش وقابل للكسر", "جيد التوصيل للكهرباء وقابل للسحب", "ينصهر بسرعة كبيرة", "لافلز عديم اللون"],
+        answer: 1,
+        explanation: "يمتاز النحاس بقدرته العالية على توصيل الكهرباء وسهولة سحبه على شكل أسلاك."
+      },
+      {
+        q: "10. لحماية الأبواب والجسور الحديدية من الصدأ (موضوع أفكر ص62) نقوم بـ:",
+        options: ["رشها بالماء يومياً", "طلائها بالدهان أو الجلفنة لعزلها عن الماء والهواء", "تركها مكشوفة في المطر", "خلطها بالكبريت"],
+        answer: 1,
+        explanation: "الطلاء بالدهان أو الجلفنة يعزل الحديد عن الماء والأكسجين فيمنع تكون الصدأ."
+      }
+    ];
+
+    const quizContainer = document.getElementById("quizContainer");
+    questions.forEach(function (item, idx) {
+      const div = document.createElement("div");
+      div.className = "question-item";
+      const optsHtml = item.options.map(function (opt, oIdx) {
+        return '<label class="option-label"><input type="radio" name="q' + idx + '" value="' + oIdx + '"> ' + opt + "</label>";
+      }).join("");
+      div.innerHTML = "<h4>" + item.q + "</h4>" + optsHtml + '<div class="q-feedback" id="qfb' + idx + '"></div>';
+      quizContainer.appendChild(div);
+    });
+
+    // إدارة التبويبات ومؤشر التقدم
+    const stepsDone = { step1: false, step2: false, step3: false, step4: false, step5: false };
+    const tabOrder = ["tab1", "tab2", "tab3", "tab4", "tab5"];
+
+    function updateProgress() {
+      const keys = Object.keys(stepsDone);
+      let doneCount = 0;
+      keys.forEach(function (k) {
+        if (stepsDone[k]) doneCount++;
+      });
+      const pct = Math.round((doneCount / keys.length) * 100);
+      document.getElementById("progressFill").style.width = pct + "%";
+      document.getElementById("progressText").textContent = pct + "%";
+    }
+
+    function markStep(stepKey) {
+      stepsDone[stepKey] = true;
+      updateProgress();
+    }
+
+    function openTabById(tabId) {
+      document.querySelectorAll(".tab-section").forEach(function (sec) {
+        sec.classList.remove("active");
+      });
+      document.querySelectorAll(".tab-btn").forEach(function (btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-tab-target") === tabId);
+      });
+      const targetSec = document.getElementById(tabId);
+      if (targetSec) {
+        targetSec.classList.add("active");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".tab-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const target = btn.getAttribute("data-tab-target");
+        if (target) openTabById(target);
+      });
+    });
+
+    document.getElementById("nextToLabBtn").addEventListener("click", function () {
+      markStep("step1");
+      openTabById("tab2");
+    });
+
+    document.getElementById("nextToMisconceptionsBtn").addEventListener("click", function () {
+      markStep("step2");
+      openTabById("tab3");
+    });
+
+    document.getElementById("nextToActivitiesBtn").addEventListener("click", function () {
+      markStep("step3");
+      openTabById("tab4");
+    });
+
+    document.getElementById("nextToQuizBtn").addEventListener("click", function () {
+      markStep("step4");
+      openTabById("tab5");
+    });
+
+    document.getElementById("homeReturnBtn").addEventListener("click", function () {
+      openTabById("tab1");
+    });
+
+    // التبديل بين الأنشطة العشرة في المختبر الافتراضي
+    function switchSim(numStr) {
+      const num = String(numStr);
+      for (let i = 1; i <= 10; i++) {
+        const box = document.getElementById("simBox" + i);
+        if (box) box.style.display = (String(i) === num) ? "block" : "none";
+      }
+      document.querySelectorAll("[data-sim-btn]").forEach(function (btn) {
+        btn.classList.toggle("selected", btn.getAttribute("data-sim-btn") === num);
+      });
+    }
+
+    document.querySelectorAll("[data-sim-btn]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        switchSim(btn.getAttribute("data-sim-btn"));
+      });
+    });
+
+    function setActiveChipInContainer(containerSelector, activeBtn) {
+      document.querySelectorAll(containerSelector + " .sample-chip-btn").forEach(function (b) {
+        b.classList.remove("active-chip");
+      });
+      if (activeBtn) activeBtn.classList.add("active-chip");
+    }
+
+    // --- نشاط 1 ---
+    let sim1Group = "sulfur_hg_o2";
+
+    function runSim1Action(mode) {
+      const obs = document.getElementById("obs1");
+      const mol = document.getElementById("o2Molecules");
+      const solidShape = document.getElementById("sim1SolidShape");
+      const solidTitle = document.getElementById("sim1SolidTitle");
+      const liquidFill = document.getElementById("sim1LiquidFill");
+      const liquidTitle = document.getElementById("sim1LiquidTitle");
+      const gasTitle = document.getElementById("sim1GasTitle");
+
+      if (mode === "reset") {
+        sim1Group = "sulfur_hg_o2";
+        setActiveChipInContainer("#simBox1", document.querySelector('[data-sim1-group="sulfur_hg_o2"]'));
+        mol.setAttribute("opacity", "0.45");
+        solidShape.setAttribute("fill", "#facc15");
+        solidShape.setAttribute("stroke", "#ca8a04");
+        solidTitle.textContent = "الكبريت (صلب - أصفر)";
+        liquidFill.setAttribute("fill", "#94a3b8");
+        liquidTitle.textContent = "الزئبق (سائل - فضي)";
+        gasTitle.textContent = "الأكسجين (غاز - عديم اللون)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> توجد معظم العناصر صلبة كالكبريت (أصفر)، الحديد (رمادي)، النحاس (أحمر مائل للبني)، الألمنيوم والمغنيسيوم (فضي)، والكربون/الجرافيت (أسود). ويوجد عنصران فقط سائلان في درجة حرارة الغرفة: <strong>الزئبق</strong> (فلز سائل فضي) و<strong>البروم</strong> (لافلز سائل بني محمر)، بينما توجد عناصر مثل الأكسجين والنيتروجين والهيدروجين والكلور في الحالة الغازية.";
+        return;
+      }
+
+      markStep("step2");
+      mol.setAttribute("opacity", "1");
+
+      if (sim1Group === "sulfur_hg_o2") {
+        solidShape.setAttribute("fill", "#facc15");
+        solidShape.setAttribute("stroke", "#ca8a04");
+        solidTitle.textContent = "الكبريت (صلب - أصفر)";
+        liquidFill.setAttribute("fill", "#94a3b8");
+        liquidTitle.textContent = "الزئبق (سائل - فضي)";
+        gasTitle.textContent = "الأكسجين (غاز - عديم اللون)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> <strong>الكبريت</strong> صلب أصفر، و<strong>الزئبق</strong> سائل فضي (الفلز السائل الوحيد في درجة حرارة الغرفة)، و<strong>الأكسجين</strong> غاز عديم اللون.";
+      } else if (sim1Group === "metals_br_n2") {
+        solidShape.setAttribute("fill", "#d97706");
+        solidShape.setAttribute("stroke", "#92400e");
+        solidTitle.textContent = "الحديد/النحاس/الألمنيوم (صلبة)";
+        liquidFill.setAttribute("fill", "#991b1b");
+        liquidTitle.textContent = "البروم (سائل - بني محمر)";
+        gasTitle.textContent = "النيتروجين (غاز - عديم اللون)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات كالحديد (رمادي)، النحاس (أحمر مائل للبني)، والألمنيوم (فضي) صلبة، و<strong>البروم</strong> لافلز سائل بني محمر، و<strong>النيتروجين</strong> غاز.";
+      } else if (sim1Group === "mg_c_h2_cl2") {
+        solidShape.setAttribute("fill", "#1e293b");
+        solidShape.setAttribute("stroke", "#0f172a");
+        solidTitle.textContent = "المغنيسيوم (فضي) / الكربون (أسود)";
+        liquidFill.setAttribute("fill", "#94a3b8");
+        liquidTitle.textContent = "الزئبق (سائل فضي)";
+        gasTitle.textContent = "الهيدروجين / الكلور (غازات)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يظهر <strong>المغنيسيوم</strong> بلون فضي صلب، و<strong>الكربون (الجرافيت)</strong> بلون أسود صلب، بينما الهيدروجين والكلور والأكسجين والنيتروجين غازات.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim1-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim1Group = btn.getAttribute("data-sim1-group");
+        setActiveChipInContainer("#simBox1", btn);
+        runSim1Action("run");
+      });
+    });
+    document.getElementById("sim1RunBtn").addEventListener("click", function () { runSim1Action("run"); });
+    document.getElementById("sim1ResetBtn").addEventListener("click", function () { runSim1Action("reset"); });
+
+    // --- نشاط 2 ---
+    let sim2Group = "cu_c";
+
+    function runSim2Action(mode) {
+      const shine = document.getElementById("copperShine");
+      const obs = document.getElementById("obs2");
+      const leftBar = document.getElementById("copperBar");
+      const rightChunk = document.getElementById("carbonChunk");
+      const leftLabel = document.getElementById("sim2LeftLabel");
+      const rightLabel = document.getElementById("sim2RightLabel");
+
+      if (mode === "reset") {
+        sim2Group = "cu_c";
+        setActiveChipInContainer("#simBox2", document.querySelector('[data-sim2-group="cu_c"]'));
+        shine.setAttribute("opacity", "0");
+        leftBar.setAttribute("fill", "#b45309");
+        rightChunk.setAttribute("fill", "#334155");
+        leftLabel.textContent = "النحاس / الذهب / الفضة (فلزات)";
+        rightLabel.textContent = "الكبريت / الكربون / اليود (لافلزات)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> عند صقل الفلزات مثل النحاس، الفضة، الذهب، الألمنيوم، الحديد، المغنيسيوم (وكذلك الزئبق السائل) يظهر بريق ولمعان معدني واضح، بينما تبدو اللافلزات الصلبة مثل الكبريت، الكربون، واليود معتمة أو غير ذات بريق معدني.";
+        return;
+      }
+
+      markStep("step2");
+      shine.setAttribute("opacity", "0.92");
+
+      if (sim2Group === "cu_c") {
+        leftBar.setAttribute("fill", "#d97706");
+        rightChunk.setAttribute("fill", "#334155");
+        leftLabel.textContent = "النحاس (لامع ذو بريق معدني)";
+        rightLabel.textContent = "الكربون (معتم غير لامع)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يكتسب <strong>النحاس</strong> لمعاناً وبريقاً معدنياً عند الصقل، بينما يبقى <strong>الكربون</strong> معتماً غير لامع.";
+      } else if (sim2Group === "au_ag_s") {
+        leftBar.setAttribute("fill", "#eab308");
+        rightChunk.setAttribute("fill", "#facc15");
+        leftLabel.textContent = "الذهب والفضة (بريق معدني عالٍ)";
+        rightLabel.textContent = "الكبريت (معتم أصفر)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يتميز <strong>الذهب</strong> و<strong>الفضة</strong> ببريق ولمعان معدني واضح، بعكس <strong>الكبريت</strong> الذي يفتقر للبريق المعدني.";
+      } else if (sim2Group === "al_fe_mg_i") {
+        leftBar.setAttribute("fill", "#cbd5e1");
+        rightChunk.setAttribute("fill", "#7e22ce");
+        leftLabel.textContent = "الألمنيوم / الحديد / المغنيسيوم (لامعة)";
+        rightLabel.textContent = "اليود (غير ذي بريق معدني)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> تظهر الفلزات (الألمنيوم، الحديد، المغنيسيوم) لمعاناً عند الصقل، بينما يكون <strong>اليود</strong> (كالكبريت والكربون) غير ذي بريق معدني.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim2-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim2Group = btn.getAttribute("data-sim2-group");
+        setActiveChipInContainer("#simBox2", btn);
+        runSim2Action("run");
+      });
+    });
+    document.getElementById("sim2RunBtn").addEventListener("click", function () { runSim2Action("run"); });
+    document.getElementById("sim2ResetBtn").addEventListener("click", function () { runSim2Action("reset"); });
+
+    // --- نشاط 3 (القابلية للطرق والسحب والتشكيل) ---
+    let sim3Group = "al_s";
+    let sim3Hammered = false;
+
+    function getSim3Meta(group) {
+      if (group === "cu_au_ag_c") {
+        return {
+          metalColor: "#eab308",
+          nonMetalColor: "#334155",
+          fragColor: "#334155",
+          fragAltColor: "#1e293b",
+          idleLeft: "النحاس والذهب والفضة (فلزات)",
+          idleRight: "الكربون (لافلز صلب)",
+          activeLeft: "النحاس والذهب والفضة (طرق وسحب عالٍ)",
+          activeRight: "الكربون (هش يتكسر)",
+          note: "يُسحب <strong>النحاس</strong> لأسلاك، ويُعد <strong>الذهب</strong> و<strong>الفضة</strong> من أكثر العناصر قابلية للطرق والسحب لصناعة الصفائح والأسلاك الدقيقة، بينما يتكسر <strong>الكربون</strong> لأنه لافلز هش."
+        };
+      }
+      if (group === "fe_i") {
+        return {
+          metalColor: "#64748b",
+          nonMetalColor: "#7e22ce",
+          fragColor: "#7e22ce",
+          fragAltColor: "#581c87",
+          idleLeft: "الحديد (فلز)",
+          idleRight: "اليود (لافلز)",
+          activeLeft: "الحديد (قابل للطرق والتشكيل)",
+          activeRight: "اليود (هش يتفتت)",
+          note: "يُطرق <strong>الحديد</strong> ويُشكّل دون أن يتكسر، بينما يتفتت <strong>اليود</strong> اللافلزي عند طرقِهِ لأنه هش."
+        };
+      }
+      return {
+        metalColor: "#94a3b8",
+        nonMetalColor: "#facc15",
+        fragColor: "#facc15",
+        fragAltColor: "#eab308",
+        idleLeft: "الألمنيوم (فلز)",
+        idleRight: "الكبريت (لافلز)",
+        activeLeft: "الألمنيوم (قابل للطرق لرقائق وأواني)",
+        activeRight: "الكبريت (هش يتفتت بالطرق)",
+        note: "يُطرق <strong>الألمنيوم</strong> ليتحول إلى رقائق وأواني دون أن ينكسر، بينما يتفتت <strong>الكبريت</strong> لأنه لافلز هش."
+      };
+    }
+
+    function renderSim3() {
+      const alu = document.getElementById("aluShape");
+      const sWhole = document.getElementById("sulfurWhole");
+      const sCrush = document.getElementById("sulfurCrushed");
+      const nonMetalBox = document.getElementById("sim3NonMetalBox");
+      const leftLabel = document.getElementById("sim3LeftLabel");
+      const rightLabel = document.getElementById("sim3RightLabel");
+      const hammerGroup = document.getElementById("hammerGroup");
+      const meta = getSim3Meta(sim3Group);
+
+      alu.setAttribute("fill", meta.metalColor);
+      nonMetalBox.setAttribute("fill", meta.nonMetalColor);
+      ["sim3Frag1", "sim3Frag3", "sim3Frag5"].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute("fill", meta.fragColor);
+      });
+      ["sim3Frag2", "sim3Frag4"].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) el.setAttribute("fill", meta.fragAltColor);
+      });
+
+      if (!sim3Hammered) {
+        alu.setAttribute("x", "105");
+        alu.setAttribute("width", "90");
+        alu.setAttribute("y", "95");
+        alu.setAttribute("height", "45");
+        sWhole.setAttribute("opacity", "1");
+        sCrush.setAttribute("opacity", "0");
+        leftLabel.textContent = meta.idleLeft;
+        rightLabel.textContent = meta.idleRight;
+        hammerGroup.setAttribute("transform", "translate(0, 0)");
+      } else {
+        alu.setAttribute("x", "75");
+        alu.setAttribute("width", "150");
+        alu.setAttribute("y", "122");
+        alu.setAttribute("height", "16");
+        sWhole.setAttribute("opacity", "0");
+        sCrush.setAttribute("opacity", "1");
+        leftLabel.textContent = meta.activeLeft;
+        rightLabel.textContent = meta.activeRight;
+        hammerGroup.setAttribute("transform", "translate(0, 42)");
+      }
+    }
+
+    function runSim3Action(mode) {
+      const obs = document.getElementById("obs3");
+      if (mode === "reset") {
+        sim3Group = "al_s";
+        sim3Hammered = false;
+        setActiveChipInContainer("#simBox3", document.querySelector('[data-sim3-group="al_s"]'));
+        renderSim3();
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات قابلة للطرق والسحب والتشكيل دون أن تتكسر؛ فالألمنيوم يُطرق لرقائق وأواني، والنحاس يُطرق ويُسحب لأسلاك، والذهب والفضة من أكثر العناصر قابلية للطرق والسحب لصناعة الصفائح والأسلاك الدقيقة، ويُطرق الحديد أيضاً، بينما اللافلزات الصلبة كالكبريت والكربون واليود هشة تتكسر وتتفتت عند طرقها.";
+        return;
+      }
+      if (mode === "hammer") {
+        sim3Hammered = true;
+      }
+      markStep("step2");
+      renderSim3();
+      const meta = getSim3Meta(sim3Group);
+      obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> " + (sim3Hammered ? meta.note : ("تم اختيار (" + meta.idleLeft + " مقابل " + meta.idleRight + ") — اضغط على <strong>الطرق بالمطرقة على العينات</strong> لمشاهدة النتيجة."));
+    }
+
+    document.querySelectorAll("[data-sim3-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim3Group = btn.getAttribute("data-sim3-group");
+        setActiveChipInContainer("#simBox3", btn);
+        runSim3Action("select");
+      });
+    });
+    document.getElementById("sim3RunBtn").addEventListener("click", function () { runSim3Action("hammer"); });
+    document.getElementById("sim3ResetBtn").addEventListener("click", function () { runSim3Action("reset"); });
+
+    // --- نشاط 4 ---
+    let sim4Group = "cu_c";
+
+    function runSim4Action(mode) {
+      const flame = document.getElementById("heatFlame");
+      const wax1 = document.getElementById("waxDrop1");
+      const obs = document.getElementById("obs4");
+      const condRod = document.getElementById("sim4CondRod");
+      const insRod = document.getElementById("sim4InsRod");
+      const topLabel = document.getElementById("sim4TopLabel");
+      const botLabel = document.getElementById("sim4BotLabel");
+
+      if (mode === "reset") {
+        sim4Group = "cu_c";
+        setActiveChipInContainer("#simBox4", document.querySelector('[data-sim4-group="cu_c"]'));
+        flame.setAttribute("fill", "#cbd5e1");
+        wax1.setAttribute("cy", "118");
+        wax1.setAttribute("opacity", "1");
+        condRod.setAttribute("fill", "#d97706");
+        insRod.setAttribute("fill", "#334155");
+        topLabel.textContent = "النحاس / الألمنيوم / الحديد + شمع";
+        botLabel.textContent = "الكربون / الكبريت / الخشب + شمع";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات مثل النحاس، الألمنيوم، الفضة، والحديد جيدة التوصيل للحرارة وتُستخدم في أواني الطهي والمبادلات الحرارية فتسقط قطعة الشمع سريعاً، بينما اللافلزات والمواد الأخرى كالكبريت، الكربون، والخشب رديئة التوصيل للحرارة.";
+        return;
+      }
+
+      markStep("step2");
+      flame.setAttribute("fill", "#f97316");
+      wax1.setAttribute("cy", "165");
+      wax1.setAttribute("opacity", "0.3");
+
+      if (sim4Group === "cu_c") {
+        condRod.setAttribute("fill", "#d97706");
+        insRod.setAttribute("fill", "#334155");
+        topLabel.textContent = "النحاس (موصل جيد للحرارة - سقوط الشمع)";
+        botLabel.textContent = "الكربون (رديء التوصيل للحرارة)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> ينقل <strong>النحاس</strong> الحرارة بسرعة فتسقط قطعة الشمع، بينما يضعف نقل الحرارة في <strong>الكربون</strong>.";
+      } else if (sim4Group === "al_fe_s") {
+        condRod.setAttribute("fill", "#64748b");
+        insRod.setAttribute("fill", "#facc15");
+        topLabel.textContent = "الألمنيوم والحديد (موصلان جيدان للحرارة)";
+        botLabel.textContent = "الكبريت (رديء التوصيل للحرارة)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> ينقل <strong>الألمنيوم</strong> و<strong>الحديد</strong> الحرارة جيداً فتسقط قطعة الشمع، بينما يُعد <strong>الكبريت</strong> رديء التوصيل للحرارة.";
+      } else if (sim4Group === "ag_wood") {
+        condRod.setAttribute("fill", "#cbd5e1");
+        insRod.setAttribute("fill", "#92400e");
+        topLabel.textContent = "الفضة (أواني طهي ومبادلات حرارية)";
+        botLabel.textContent = "الكبريت والخشب (رديئة التوصيل للحرارة)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> تُعد <strong>الفضة</strong> من الفلزات عالية التوصيل للحرارة وتُستخدم في أواني الطهي والمبادلات الحرارية، بينما الكبريت والخشب رديئة التوصيل للحرارة.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim4-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim4Group = btn.getAttribute("data-sim4-group");
+        setActiveChipInContainer("#simBox4", btn);
+        runSim4Action("heat");
+      });
+    });
+    document.getElementById("sim4RunBtn").addEventListener("click", function () { runSim4Action("heat"); });
+    document.getElementById("sim4ResetBtn").addEventListener("click", function () { runSim4Action("reset"); });
+
+    // --- نشاط 5 ---
+    function runSim5Type(type, btnEl) {
+      const sample = document.getElementById("testSample");
+      const label = document.getElementById("sampleLabel");
+      const bulb = document.getElementById("bulbGlow");
+      const obs = document.getElementById("obs5");
+      markStep("step2");
+      setActiveChipInContainer("#simBox5", btnEl);
+
+      if (type === "iron_cu_al") {
+        sample.setAttribute("fill", "#d97706");
+        label.textContent = "الحديد / النحاس / الألمنيوم (فلزات موصلة)";
+        bulb.setAttribute("fill", "#fde047");
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يُضيء المصباح! فالفلزات (الحديد، النحاس، الألمنيوم) جيدة التوصيل للتيار الكهربائي.";
+      } else if (type === "carbon") {
+        sample.setAttribute("fill", "#1e293b");
+        label.textContent = "الكربون / الجرافيت (لافلز موصل)";
+        bulb.setAttribute("fill", "#fde047");
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يُضيء المصباح! ف<strong>الكربون (الجرافيت)</strong> هو اللافلز الموصل للتيار الكهربائي.";
+      } else if (type === "sulfur_iodine") {
+        sample.setAttribute("fill", "#facc15");
+        label.textContent = "الكبريت / اليود (لافلزات رديئة التوصيل)";
+        bulb.setAttribute("fill", "#e2e8f0");
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> لا يُضيء المصباح؛ فالكبريت واليود من اللافلزات رديئة التوصيل للتيار الكهربائي.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim5-type]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        runSim5Type(btn.getAttribute("data-sim5-type"), btn);
+      });
+    });
+
+    document.getElementById("sim5ResetBtn").addEventListener("click", function () {
+      setActiveChipInContainer("#simBox5", null);
+      document.getElementById("testSample").setAttribute("fill", "#cbd5e1");
+      document.getElementById("sampleLabel").textContent = "اختر عنصراً للفحص";
+      document.getElementById("bulbGlow").setAttribute("fill", "#e2e8f0");
+      document.getElementById("obs5").innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> الفلزات (الحديد، النحاس، الألمنيوم) جيدة التوصيل للكهرباء فتُضيء المصباح، وكذلك <strong>الكربون (الجرافيت)</strong> فهو لافلز موصل للكهرباء، بينما الكبريت واليود رديئة التوصيل للكهرباء فلا يُضيء المصباح.";
+    });
+
+    // --- نشاط 6 ---
+    let sim6Group = "fe_ni_co";
+
+    function runSim6Action(mode) {
+      const nails = document.getElementById("ironNails");
+      const obs = document.getElementById("obs6");
+      const magLabel = document.getElementById("sim6MagLabel");
+
+      if (mode === "reset") {
+        sim6Group = "fe_ni_co";
+        setActiveChipInContainer("#simBox6", document.querySelector('[data-sim6-group="fe_ni_co"]'));
+        nails.setAttribute("transform", "translate(0, 0)");
+        magLabel.textContent = "الحديد / النيكل / الكوبالت";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> تنجذب عناصر محددة للمغناطيس مثل <strong>الحديد، النيكل، والكوبالت</strong>، بينما لا تنجذب إليه عناصر النحاس، الألمنيوم، والكبريت.";
+        return;
+      }
+
+      markStep("step2");
+      if (sim6Group === "fe_ni_co") {
+        nails.setAttribute("transform", "translate(95, -92)");
+        magLabel.textContent = "الحديد والنيكل والكوبالت (تنجذب)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> تنجذب عناصر <strong>الحديد، النيكل، والكوبالت</strong> إلى المغناطيس.";
+      } else {
+        nails.setAttribute("transform", "translate(0, 0)");
+        magLabel.textContent = "الحديد / النيكل / الكوبالت";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> لا تنجذب للمغناطيس عناصر النحاس، الألمنيوم، والكبريت.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim6-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim6Group = btn.getAttribute("data-sim6-group");
+        setActiveChipInContainer("#simBox6", btn);
+        runSim6Action("attract");
+      });
+    });
+    document.getElementById("sim6RunBtn").addEventListener("click", function () { runSim6Action("attract"); });
+    document.getElementById("sim6ResetBtn").addEventListener("click", function () { runSim6Action("reset"); });
+
+    // --- نشاط 7 ---
+    let sim7Group = "s_fe";
+
+    function runSim7Action(mode) {
+      const sBox = document.getElementById("sulfurMeltBox");
+      const hBox = document.getElementById("sim7HighBox");
+      const obs = document.getElementById("obs7");
+      const lowLabel = document.getElementById("sim7LowLabel");
+      const highLabel = document.getElementById("sim7HighLabel");
+
+      if (mode === "reset") {
+        sim7Group = "s_fe";
+        setActiveChipInContainer("#simBox7", document.querySelector('[data-sim7-group="s_fe"]'));
+        sBox.setAttribute("height", "45");
+        sBox.setAttribute("y", "95");
+        sBox.setAttribute("fill", "#facc15");
+        hBox.setAttribute("height", "45");
+        hBox.setAttribute("y", "95");
+        lowLabel.textContent = "الكبريت (115°م)";
+        highLabel.textContent = "الحديد (1538°م)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> ينصهر <strong>الكبريت</strong> عند نحو <strong>115°م</strong>، بينما يمتاز <strong>الحديد</strong> بدرجة انصهار مرتفعة جداً تقارب <strong>1538°م</strong>؛ وبوجه عام تمتاز الفلزات بارتفاع درجات انصهارها مقارنة باللافلزات.";
+        return;
+      }
+
+      markStep("step2");
+      if (sim7Group === "s_fe") {
+        sBox.setAttribute("height", "16");
+        sBox.setAttribute("y", "124");
+        sBox.setAttribute("fill", "#ea580c");
+        hBox.setAttribute("height", "45");
+        hBox.setAttribute("y", "95");
+        lowLabel.textContent = "الكبريت (115°م - منخفضة)";
+        highLabel.textContent = "الحديد (1538°م - مرتفعة جداً)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> ينصهر <strong>الكبريت</strong> عند نحو <strong>115°م</strong>، بينما يمتاز <strong>الحديد</strong> بدرجة انصهار مرتفعة جداً تقارب <strong>1538°م</strong>.";
+      } else {
+        sBox.setAttribute("height", "18");
+        sBox.setAttribute("y", "122");
+        sBox.setAttribute("fill", "#facc15");
+        hBox.setAttribute("height", "38");
+        hBox.setAttribute("y", "102");
+        lowLabel.textContent = "اللافلزات (أقل انصهاراً)";
+        highLabel.textContent = "الفلزات (أعلى انصهاراً)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> تمتاز الفلزات بارتفاع درجات انصهارها عموماً مقارنة باللافلزات.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim7-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim7Group = btn.getAttribute("data-sim7-group");
+        setActiveChipInContainer("#simBox7", btn);
+        runSim7Action("heat");
+      });
+    });
+    document.getElementById("sim7RunBtn").addEventListener("click", function () { runSim7Action("heat"); });
+    document.getElementById("sim7ResetBtn").addEventListener("click", function () { runSim7Action("reset"); });
+
+    // --- نشاط 8 ---
+    function runSim8Action(step) {
+      const flash = document.getElementById("mgFlash");
+      const ash = document.getElementById("mgAsh");
+      const bFlame = document.getElementById("sulfurBlueFlame");
+      const obs = document.getElementById("obs8");
+      const rightLabel = document.getElementById("sim8RightLabel");
+
+      if (step === 1) {
+        markStep("step2");
+        flash.setAttribute("opacity", "1");
+        ash.setAttribute("opacity", "1");
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يحترق شريط <strong>المغنيسيوم</strong> بلهب أبيض ساطع مكوّناً <strong>أكسيد المغنيسيوم</strong> (مسحوق أبيض)، وهو تفاعل كيميائي ينتج مادة جديدة.";
+      } else if (step === 2) {
+        markStep("step2");
+        bFlame.setAttribute("opacity", "1");
+        rightLabel.textContent = "مسحوق الكبريت (لهب أزرق)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يحترق <strong>الكبريت</strong> بلهب أزرق ويتصاعد غاز <strong>ثاني أكسيد الكبريت</strong>.";
+      } else {
+        flash.setAttribute("opacity", "0");
+        ash.setAttribute("opacity", "0");
+        bFlame.setAttribute("opacity", "0");
+        rightLabel.textContent = "مسحوق الكبريت";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يحترق شريط <strong>المغنيسيوم</strong> بلهب أبيض ساطع مكوّناً <strong>أكسيد المغنيسيوم</strong> (مسحوق أبيض)، ويحترق <strong>الكبريت</strong> بلهب أزرق ويتصاعد غاز <strong>ثاني أكسيد الكبريت</strong>؛ وكلاهما تفاعل كيميائي ينتج مواد جديدة.";
+      }
+    }
+
+    document.getElementById("sim8MgBtn").addEventListener("click", function () { runSim8Action(1); });
+    document.getElementById("sim8SulfurBtn").addEventListener("click", function () { runSim8Action(2); });
+    document.getElementById("sim8ResetBtn").addEventListener("click", function () { runSim8Action(0); });
+
+    // --- نشاط 9 ---
+    let sim9Mode = "normal_water";
+
+    function runSim9Action(mode) {
+      const nail = document.getElementById("rustyNail");
+      const obs = document.getElementById("obs9");
+      const tube3Label = document.getElementById("sim9Tube3Label");
+
+      if (mode === "reset") {
+        sim9Mode = "normal_water";
+        setActiveChipInContainer("#simBox9", document.querySelector('[data-sim9-mode="normal_water"]'));
+        nail.setAttribute("fill", "#64748b");
+        tube3Label.textContent = "3. ماء + هواء (رطوبة)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يصدأ الحديد في الأنبوب (3) فقط لتوفر <strong>الماء والهواء معاً</strong>، ولا يصدأ في الأنبوب (1) لغياب الماء (هواء جاف فقط) ولا في الأنبوب (2) لغياب الهواء (ماء مغلي مغطى بالزيت).";
+        return;
+      }
+
+      markStep("step2");
+      if (sim9Mode === "normal_water") {
+        nail.setAttribute("fill", "#b45309");
+        tube3Label.textContent = "3. ماء + هواء (يتكوّن الصدأ)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يتكوّن <strong>صدأ الحديد</strong> في الأنبوب (3) فقط لتوفر <strong>الماء والهواء معاً</strong>، ولا يصدأ في الأنبوب (1) لغياب الماء ولا في الأنبوب (2) لغياب الهواء.";
+      } else {
+        nail.setAttribute("fill", "#991b1b");
+        tube3Label.textContent = "3. ماء مالح / رطوبة عالية (أسرع)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يصدأ الحديد بصورة أسرع عند وجود <strong>ماء مالح أو رطوبة عالية</strong> مع الهواء، بينما لا يصدأ في غياب الماء أو الهواء.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim9-mode]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim9Mode = btn.getAttribute("data-sim9-mode");
+        setActiveChipInContainer("#simBox9", btn);
+        runSim9Action("observe");
+      });
+    });
+    document.getElementById("sim9RunBtn").addEventListener("click", function () { runSim9Action("observe"); });
+    document.getElementById("sim9ResetBtn").addEventListener("click", function () { runSim9Action("reset"); });
+
+    // --- نشاط 10 ---
+    let sim10Group = "zn_mg";
+
+    function runSim10Action(mode) {
+      const bubbles = document.getElementById("h2Bubbles");
+      const obs = document.getElementById("obs10");
+      const activeMetal = document.getElementById("sim10ActiveMetal");
+      const leftLabel = document.getElementById("sim10LeftLabel");
+      const rightLabel = document.getElementById("sim10RightLabel");
+
+      if (mode === "reset") {
+        sim10Group = "zn_mg";
+        setActiveChipInContainer("#simBox10", document.querySelector('[data-sim10-group="zn_mg"]'));
+        bubbles.setAttribute("opacity", "0");
+        activeMetal.setAttribute("fill", "#64748b");
+        leftLabel.textContent = "الخارصين / المغنيسيوم + حمض";
+        rightLabel.textContent = "الكبريت / الكربون + حمض";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يتفاعل <strong>الخارصين</strong> أو <strong>المغنيسيوم</strong> مع حمض الهيدروكلوريك المخفف وتتصاعد فقاعات <strong>غاز الهيدروجين</strong>، بينما لا تتفاعل عناصر مثل <strong>الكبريت</strong> أو <strong>الكربون</strong> مع الحمض المخفف.";
+        return;
+      }
+
+      markStep("step2");
+      if (sim10Group === "zn_mg") {
+        bubbles.setAttribute("opacity", "1");
+        activeMetal.setAttribute("fill", "#475569");
+        leftLabel.textContent = "الخارصين / المغنيسيوم (غاز الهيدروجين)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> يتفاعل <strong>الخارصين</strong> أو <strong>المغنيسيوم</strong> مع حمض الهيدروكلوريك المخفف وتتصاعد فقاعات <strong>غاز الهيدروجين</strong>.";
+      } else {
+        bubbles.setAttribute("opacity", "0");
+        activeMetal.setAttribute("fill", "#facc15");
+        rightLabel.textContent = "الكبريت / الكربون (لا تفاعل)";
+        obs.innerHTML = "<strong>الملاحظة العلمية والاستنتاج:</strong> لا تتفاعل عناصر <strong>الكبريت</strong> أو <strong>الكربون</strong> مع حمض الهيدروكلوريك المخفف فلا تتصاعد فقاعات غازية.";
+      }
+    }
+
+    document.querySelectorAll("[data-sim10-group]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sim10Group = btn.getAttribute("data-sim10-group");
+        setActiveChipInContainer("#simBox10", btn);
+        runSim10Action("addAcid");
+      });
+    });
+    document.getElementById("sim10RunBtn").addEventListener("click", function () { runSim10Action("addAcid"); });
+    document.getElementById("sim10ResetBtn").addEventListener("click", function () { runSim10Action("reset"); });
+
+    // كشف التصحيحات وحل أفكر
+    document.querySelectorAll("[data-corr-target]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const targetId = btn.getAttribute("data-corr-target");
+        const box = document.getElementById(targetId);
+        if (box) {
+          box.style.display = (box.style.display === "block") ? "none" : "block";
+          if (targetId === "thinkSol") markStep("step4");
+          else markStep("step3");
+        }
+      });
+    });
+
+    // التحقق من جدول أختبر نفسي (صفحة 60)
+    document.getElementById("checkChartBtn").addEventListener("click", function () {
+      const selects = document.querySelectorAll("#chartTable select");
+      let correct = 0;
+      selects.forEach(function (sel) {
+        if (sel.value === sel.getAttribute("data-ans")) {
+          sel.style.borderColor = "#15803d";
+          sel.style.backgroundColor = "#dcfce7";
+          correct++;
+        } else {
+          sel.style.borderColor = "#b91c1c";
+          sel.style.backgroundColor = "#fee2e2";
+        }
+      });
+      const fb = document.getElementById("chartFeedback");
+      fb.textContent = "أجبت بشكل صحيح على " + correct + " من أصل " + selects.length + " بنود في جدول أختبر نفسي.";
+      fb.style.color = (correct === selects.length) ? "#15803d" : "#b91c1c";
+      if (correct >= 6) markStep("step4");
+    });
+
+    // تصحيح الاختبار الذاتي وفق سلم التقدير المعتمد
+    document.getElementById("gradeQuizBtn").addEventListener("click", function () {
+      let score = 0;
+      questions.forEach(function (item, idx) {
+        const selected = document.querySelector('input[name="q' + idx + '"]:checked');
+        const fb = document.getElementById("qfb" + idx);
+        fb.style.display = "block";
+        if (selected && parseInt(selected.value, 10) === item.answer) {
+          score += 10;
+          fb.style.backgroundColor = "#dcfce7";
+          fb.style.color = "#15803d";
+          fb.textContent = "✅ إجابة صحيحة! " + item.explanation;
+        } else {
+          fb.style.backgroundColor = "#fee2e2";
+          fb.style.color = "#b91c1c";
+          fb.textContent = "❌ إجابة غير صحيحة. الصواب: (" + item.options[item.answer] + ") — " + item.explanation;
+        }
+      });
+
+      markStep("step5");
+
+      const nameVal = document.getElementById("studentName").value.trim() || "طالب الصف السادس";
+      const secVal = document.getElementById("studentSection").value.trim() || "---";
+      document.getElementById("resStudentName").textContent = nameVal;
+      document.getElementById("resStudentSection").textContent = secVal;
+      document.getElementById("resScoreText").textContent = score + " / 100";
+
+      const badge = document.getElementById("resGradeBadge");
+      const plan = document.getElementById("resRemedialPlan");
+
+      if (score < 50) {
+        badge.textContent = "التقدير: ضعيف";
+        badge.style.backgroundColor = "#b91c1c";
+        plan.textContent = "خطة المعالجة: أعد قراءة بطاقات المحطة الأولى وجرّب الأنشطة العشرة في المختبر الافتراضي مرة أخرى قبل إعادة الاختبار.";
+      } else if (score < 60) {
+        badge.textContent = "التقدير: متوسط";
+        badge.style.backgroundColor = "#d97706";
+        plan.textContent = "خطة الدعم: راجع الفرق بين الخصائص الفيزيائية والخصائص الكيميائية، وراجع محطة الأخطاء الشائعة.";
+      } else if (score < 70) {
+        badge.textContent = "التقدير: مقبول";
+        badge.style.backgroundColor = "#ca8a04";
+        plan.textContent = "خطة التحسين: أداء مقبول؛ ركّز على شروط صدأ الحديد واستثناءات الفلزات واللافلزات (الزئبق والجرافيت).";
+      } else if (score < 80) {
+        badge.textContent = "التقدير: جيد";
+        badge.style.backgroundColor = "#0284c7";
+        plan.textContent = "أداء جيد! راجع الأسئلة التي أخطأت فيها لتصل إلى مستوى التميز.";
+      } else if (score < 90) {
+        badge.textContent = "التقدير: جيد جداً";
+        badge.style.backgroundColor = "#0d9488";
+        plan.textContent = "أداء رائع جداً! لديك فهم متين للخصائص الفيزيائية والكيميائية للعناصر.";
+      } else {
+        badge.textContent = "التقدير: ممتاز";
+        badge.style.backgroundColor = "#15803d";
+        plan.textContent = "مبارك تفوقك! أتقنت جميع مهارات درس بعض الخصائص الفيزيائية والكيميائية للعناصر بنجاح تام.";
+      }
+
+      const resCard = document.getElementById("resultCard");
+      resCard.style.display = "block";
+      resCard.scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("resetQuizBtn").addEventListener("click", function () {
+      document.querySelectorAll('#quizContainer input[type="radio"]').forEach(function (r) {
+        r.checked = false;
+      });
+      document.querySelectorAll(".q-feedback").forEach(function (f) {
+        f.style.display = "none";
+      });
+      document.getElementById("resultCard").style.display = "none";
+    });
+
+    document.getElementById("printResultBtn").addEventListener("click", function () {
+      window.print();
+    });
+
+    // حفظ واسترجاع بيانات الطالب محلياً دون تعبئة مسبقة افتراضية
+    function saveStudentInfo() {
+      try {
+        localStorage.setItem("mql_g6_elem_name", document.getElementById("studentName").value);
+        localStorage.setItem("mql_g6_elem_sec", document.getElementById("studentSection").value);
+      } catch (e) {}
+    }
+
+    document.getElementById("studentName").addEventListener("input", saveStudentInfo);
+    document.getElementById("studentSection").addEventListener("input", saveStudentInfo);
+
+    try {
+      const savedName = localStorage.getItem("mql_g6_elem_name");
+      const savedSec = localStorage.getItem("mql_g6_elem_sec");
+      if (savedName) document.getElementById("studentName").value = savedName;
+      if (savedSec) document.getElementById("studentSection").value = savedSec;
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>
